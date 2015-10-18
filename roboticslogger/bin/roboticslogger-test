@@ -1,0 +1,11 @@
+#!/usr/bin/env python2.7
+
+import time
+
+from roboticslogger.logger import Logger
+
+myLog = Logger(name="logfile.txt")
+myLog.i(message="Started Logger.")
+time.sleep(2)
+myLog.i(message="test.")
+myLog.shutdown()
