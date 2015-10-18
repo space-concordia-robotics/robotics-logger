@@ -11,8 +11,8 @@ setup(
     url='http://www.github.com/space-concordia-robotics/robotics-logger',
     license='MIT',
 
-    author='Simon Symeonidis',
-    author_email='lethaljellybean@gmail.com',
+    author='George Gonis',
+    author_email='gonis.george@gmai.com',
 
     install_requires=["colorama>=0.3.3"],
 
