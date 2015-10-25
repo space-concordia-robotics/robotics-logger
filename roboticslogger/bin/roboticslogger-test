@@ -3,9 +3,25 @@
 import time
 
 from roboticslogger.logger import Logger
+from multiprocessing import Process, Pipe
 
-myLog = Logger(name="logfile.txt")
-myLog.i(message="Started Logger.")
-time.sleep(2)
-myLog.i(message="test.")
-myLog.shutdown()
+def initLogger(conn):
+    myLog = Logger()
+
+    msg =  conn.rev()
+
+    while msg[0] != done:
+        if msg[0] == info:
+            myLog.info(msg[1])
+        elif msg[0] == err:
+            myLog.err(msg[1])
+        elif msg[0] == warn:
+            myLog.warn(msg[1])
+        elif msg[0] == crit:
+            myLog.crit(msg[1])
+
+        msg = conn.recv()
+
+parent_conn, child_conn = Pipe()
+p = Process(target=initLogger, args=(child_conn,))
+p.start()

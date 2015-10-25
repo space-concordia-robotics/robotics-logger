@@ -8,23 +8,24 @@ class Logger(logging.getLoggerClass()):
         self.logfile = name
         logging.basicConfig(format='%(asctime)s: %(levelname)s: %(message)s',
                             filename=name,
+                            filemode='w',
                             level=logging.DEBUG)
 
     " Used to log information."
-    def i(self, message):
-        logging.info(message)
+    def info(self, msg):
+        logging.info(msg)
 
     " Used to log warnings."
-    def w(self):
-        logging.warning(message)
+    def warn(self, msg):
+        logging.warning(msg)
 
     " Used to log errors."
-    def e(self):
-        logging.error(message)
+    def err(self, msg):
+        logging.error(msg)
 
     " Used to log critical errors."
-    def c(self):
-        logging.critical(message)
+    def crit(self, msg):
+        logging.critical(msg)
 
     " Shutdown logger gracefully."
     def shutdown(self):
