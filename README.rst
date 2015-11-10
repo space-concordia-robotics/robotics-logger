@@ -22,10 +22,10 @@ This is how you send messages to the logger
     parent_conn.send(["info", "wtf"])
     parent_conn.send(["warn", "maybe"])
     parent_conn.send(["crit", "yea"])
-    parent_conn.send(["err", "wat"])`
+    parent_conn.send(["err", "wat"])
 
 This is how you close the logger
     parent_conn.send(["done"])
-    parent_conn.close()`
+    parent_conn.close()
 
 * You don't need to close the connection each time you send a message.
