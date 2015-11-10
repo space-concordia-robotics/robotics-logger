@@ -28,4 +28,4 @@ This is how you close the logger
     parent_conn.send(["done"])
     parent_conn.close()`
 
-### You don't need to close the connection each time you send a message.
+* You don't need to close the connection each time you send a message.
