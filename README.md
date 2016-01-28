@@ -3,7 +3,7 @@
 ##Asynchronous Logging System for Space Concordia Robotics Division
 
 ###Accessing Log Files
-The logger saves files to datestamped files at ~/home/[user]/Logs/RoboticsLogger/[date].[name].log
+The logger saves files to datestamped files at `~/home/[user]/Logs/RoboticsLogger/[date].[name].log`
 Only Linux/Unix-like OS is supported for now.
 
 ###Using the Logger
