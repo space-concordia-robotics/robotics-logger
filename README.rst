@@ -1,9 +1,12 @@
-Robotics Logger
-===============
+#Robotics Logger
 
-Asynchronous Logging System for Space Concordia Robotics Division
-------------------------------------------------------------------
+##Asynchronous Logging System for Space Concordia Robotics Division
 
+###Accessing Log Files
+The logger saves files to datestamped files at ~/home/[user]/Logs/RoboticsLogger/[date].[name].log
+Only Linux/Unix-like OS is supported for now.
+
+###Using the Logger
 You must include the  logger from roboticslogger and multiprocessing
     from roboticslogger.logger import Logger
 
@@ -36,3 +39,5 @@ This is how you close the logger
     
 
 * You don't need to close the connection each time you send a message.
+
+TODO: Optional simultaneous output to stdout, test on Windows and OSX
