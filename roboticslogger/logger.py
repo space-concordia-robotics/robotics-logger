@@ -51,3 +51,5 @@ class Logger(logging.getLoggerClass()):
             msg = []
             msg = conn.recv()
 
+        self.shutdown()
+        conn.close()

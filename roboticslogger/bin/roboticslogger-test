@@ -15,5 +15,3 @@ parent_conn.send(["warn", "maybe"])
 parent_conn.send(["crit", "yea"])
 parent_conn.send(["err", "wat"])
 parent_conn.send(["done"])
-
-parent_conn.close()
