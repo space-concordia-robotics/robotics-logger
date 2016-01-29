@@ -7,17 +7,11 @@ myLogger = Logger()
 
 parent_conn, child_conn = Pipe()
 p = Process(target=myLogger.run, args=(child_conn,))
+
 p.start()
 
-
 parent_conn.send(["info", "wtf"])
-
 parent_conn.send(["warn", "maybe"])
-
 parent_conn.send(["crit", "yea"])
-
 parent_conn.send(["err", "wat"])
-
 parent_conn.send(["done"])
-parent_conn.close()
-

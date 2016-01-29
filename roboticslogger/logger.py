@@ -1,14 +1,17 @@
 ﻿import logging
+from roboticslogger.file_handler import RoboticsFileHandler
 
 class Logger(logging.getLoggerClass()):
     logfile = ""
 
-    def __init__(self, name="log.txt"):
+    def __init__(self, name="default"):
         self.logfile = name
-        logging.basicConfig(format='%(asctime)s: %(levelname)s: %(message)s',
-                            filename=name,
-                            filemode='w',
-                            level=logging.DEBUG)
+        
+        formatter = logging.Formatter(fmt = '%(asctime)s: %(levelname)s: %(message)s')
+        roboticsFileHandler = RoboticsFileHandler(filename = name, mode = 'w')
+        roboticsFileHandler.setFormatter(formatter)
+
+        logging.getLogger('').addHandler(roboticsFileHandler)
 
     " Used to log information."
     def info(self, msg):
@@ -28,8 +31,7 @@ class Logger(logging.getLoggerClass()):
 
     " Shutdown logger gracefully."
     def shutdown(self):
-        pass
-
+        logging.shutdown()
 
     def run(self, conn):
         msg = conn.recv()
@@ -44,8 +46,10 @@ class Logger(logging.getLoggerClass()):
             elif msg[0] == "crit":
                 self.crit(msg[1])
             else:
-                error("Cannot log properly msg.")
+                self.err("Failed to log message.")
 
-            msg = ""
+            msg = []
             msg = conn.recv()
 
+        self.shutdown()
+        conn.close()
