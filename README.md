@@ -4,7 +4,6 @@
 
 ###Accessing Log Files
 The logger saves files to datestamped files at `~/home/[user]/Logs/RoboticsLogger/[date].[name].log`
-Only Linux/Unix-like OS is supported for now.
 
 ###Using the Logger
 You must include the  logger from roboticslogger and multiprocessing
@@ -43,4 +42,4 @@ parent_conn.send(["done"])
 
 The logger loop then ends, the logger shuts down and the pipe is closed. You don't need to close the connection each time you send a message.
 
-TODO: Optional simultaneous output to stdout, test on Windows and OSX
+TODO: Optional simultaneous output to stdout

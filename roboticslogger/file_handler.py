@@ -5,7 +5,7 @@ import datetime
 
 def get_timestamped_filepath():
     """ Gets a timestamped filepath for the logfiles """
-    return "{0}/Logs/RoboticsLogger/".format(os.path.expanduser('~')) 
+    return os.path.join(os.path.expanduser('~'), '.config', 'rover', 'logs')
 
 def try_create_path(path, filename):
     """ Tries to create a directory at 'path' and returns the directory + filename """
@@ -17,7 +17,7 @@ def try_create_path(path, filename):
         else:
             raise
 
-    return path + datetime.date.today().isoformat() + "." + filename + ".log"
+    return os.path.join(path, datetime.date.today().isoformat() + "." + filename + ".log")
 
 class RoboticsFileHandler(logging.FileHandler):
     """ Custom logger file handler that creates the file in a predefined and timestamped folder structure. Only unix-like supported for now """
