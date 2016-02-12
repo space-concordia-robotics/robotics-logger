@@ -7,7 +7,7 @@ setup(
     version=roboticslogger.__version__,
 
     description='Async Logging System for Space Concordia Robotics Division',
-    long_description=open('README.rst').read(),
+    long_description=open('README.md').read(),
     url='http://www.github.com/space-concordia-robotics/robotics-logger',
     license='MIT',
 
