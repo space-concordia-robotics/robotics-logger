@@ -1,17 +1,15 @@
 ﻿import logging
-from roboticslogger.file_handler import RoboticsFileHandler
+from roboticslogger.filepaths import get_timestamped_filepath, try_create_path
 
 class Logger(logging.getLoggerClass()):
     logfile = ""
 
     def __init__(self, name="default"):
-        self.logfile = name
-        
-        formatter = logging.Formatter(fmt = '%(asctime)s: %(levelname)s: %(message)s')
-        roboticsFileHandler = RoboticsFileHandler(filename = name, mode = 'w')
-        roboticsFileHandler.setFormatter(formatter)
-
-        logging.getLogger('').addHandler(roboticsFileHandler)
+        logfile = try_create_path(get_timestamped_filepath(), name)
+        logging.basicConfig(format='%(asctime)s: %(levelname)s: %(message)s',
+                            filename=logfile,
+                            filemode='w',
+                            level=logging.DEBUG)
 
     " Used to log information."
     def info(self, msg):
@@ -31,7 +29,8 @@ class Logger(logging.getLoggerClass()):
 
     " Shutdown logger gracefully."
     def shutdown(self):
-        logging.shutdown()
+        pass
+
 
     def run(self, conn):
         msg = conn.recv()
@@ -46,10 +45,7 @@ class Logger(logging.getLoggerClass()):
             elif msg[0] == "crit":
                 self.crit(msg[1])
             else:
-                self.err("Failed to log message.")
+                error("Cannot log properly msg.")
 
-            msg = []
+            msg = ""
             msg = conn.recv()
-
-        self.shutdown()
-        conn.close()
