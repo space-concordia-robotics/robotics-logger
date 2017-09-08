@@ -1,11 +1,11 @@
-#Robotics Logger
+# Robotics Logger
 
-##Asynchronous Logging System for Space Concordia Robotics Division
+## Asynchronous Logging System for Space Concordia Robotics Division
 
-###Accessing Log Files
+### Accessing Log Files
 The logger saves files to datestamped files at `~/.config/rover/logs/[date].[name].log`
 
-###Using the Logger
+### Using the Logger
 You must include the  logger from roboticslogger and multiprocessing
 ```
 from roboticslogger.logger import Logger
